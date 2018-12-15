@@ -1,5 +1,5 @@
 #include <iostream>
-#include <CImg.h>
+#include "CImg.h"
 #include "assignment3.h"
 
 using cimg_library::CImg;
