@@ -1,6 +1,8 @@
 #include <iostream>
-#include "CImg.h"
 #include "assignment3.h"
+#include "CImg.h"
+
+using namespace cimg_library;
 
 using cimg_library::CImg;
 using cimg_library::CImgDisplay;

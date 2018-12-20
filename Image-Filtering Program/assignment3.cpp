@@ -1,34 +1,14 @@
-#include "CImg.h"
 #include <iostream>
+#include "CImg.h"
+
+
+using namespace cimg_library;
 using cimg_library::CImg;
-float performConvulotion(int Row_Location, int columnLocation, CImg<unsigned char>& image, CImg<unsigned char>& filter, int spectrum);
 
-CImg<unsigned char> FilterImage(const CImg<unsigned char>& image, const CImg<unsigned char>& filter){
 
-	CImg<unsigned char> Copy_Image=image;
-	CImg<unsigned char> Returning_Image= image;
-	CImg<unsigned char> Copy_Filter=filter;
-        /***
-		 Goes through each channel in the image, by getting the spectrum of the image. Then goes through every
-		 pixel in the array with dimensions height * width. 
-         ***/
+//float performConvulotion(int Row_Location, int columnLocation, CImg<unsigned char>& image, CImg<unsigned char>& filter, int spectrum);
 
-	for(int Current_Spectrum=0; Current_Spectrum<image.spectrum();Current_Spectrum++){
 
-		for(int Row=0; Row<image.height();Row++){
-
-			for(int Column=0; Column<image.width(); Column++){             
-
-				float newPixelValue = performConvulotion(Row,Column, Copy_Image, Copy_Filter, Current_Spectrum);
-				Returning_Image(Column,Row,0,Current_Spectrum) = (unsigned char) newPixelValue;
-
-			}
-
-		}
-
-	}
-	return Returning_Image;      
-}
 float performConvulotion(int  Row_Location, int columnLocation, CImg<unsigned char>& image, CImg<unsigned char>& filter, int spectrum){
 
 	int filterRowLocation=0;
@@ -67,4 +47,31 @@ float performConvulotion(int  Row_Location, int columnLocation, CImg<unsigned ch
 	else if(average>255){	average=255;	}
 
 	return average;
+}
+
+CImg<unsigned char> FilterImage(const CImg<unsigned char>& image, const CImg<unsigned char>& filter){
+
+	CImg<unsigned char> Copy_Image=image;
+	CImg<unsigned char> Returning_Image= image;
+	CImg<unsigned char> Copy_Filter=filter;
+        /***
+		 Goes through each channel in the image, by getting the spectrum of the image. Then goes through every
+		 pixel in the array with dimensions height * width. 
+         ***/
+
+	for(int Current_Spectrum=0; Current_Spectrum<image.spectrum();Current_Spectrum++){
+
+		for(int Row=0; Row<image.height();Row++){
+
+			for(int Column=0; Column<image.width(); Column++){             
+
+				float newPixelValue = performConvulotion(Row,Column, Copy_Image, Copy_Filter, Current_Spectrum);
+				Returning_Image(Column,Row,0,Current_Spectrum) = (unsigned char) newPixelValue;
+
+			}
+
+		}
+
+	}
+	return Returning_Image;      
 }
