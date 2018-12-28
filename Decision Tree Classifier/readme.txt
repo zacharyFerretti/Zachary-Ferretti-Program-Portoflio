@@ -2,7 +2,7 @@ Hey this is just a simple program I wrote in CS 383 Fall 2018. The goal is to wr
 which can give Training Data predict the political party of voters.
 
 To run and compile this program, first in the command prompt CD into this directory. Then the command is:
-"python congress_nbc.py congress_train.csv congress_test.csv"
+"python congress_dec.py congress_train.csv congress_test.csv"
 
 This trains the data on the training data, and makes test predictions on the test data.
 
